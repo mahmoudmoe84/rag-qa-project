@@ -3,6 +3,7 @@
 import logging
 import sys
 from pathlib import Path
+from typing import Any
 
 import structlog
 
@@ -81,7 +82,7 @@ def setup_logging(log_level: str = "INFO", log_file_path: str = "logs/app.log") 
     file_handler.setFormatter(formatter)
 
 
-def get_logger(name: str):
+def get_logger(name: str) -> Any:
     """Get a structlog logger instance for a module.
 
     Args:
@@ -97,6 +98,6 @@ class LoggerMixin:
     """Mixin class to add logging capability to classes."""
 
     @property
-    def logger(self):
+    def logger(self) -> Any:
         """Get logger for this class."""
         return get_logger(self.__class__.__name__)
