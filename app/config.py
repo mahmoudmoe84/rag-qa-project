@@ -39,6 +39,7 @@ class Settings(BaseSettings):
 
     # Logging
     log_level: str = "INFO"
+    log_file_path: str = "logs/app.log"
 
     # RAGAS Evaluation Settings
     enable_ragas_evaluation: bool = True
