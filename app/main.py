@@ -26,7 +26,7 @@ settings = get_settings()
 async def lifespan(app: FastAPI):
     """Application lifespan manager."""
     # Startup
-    setup_logging(settings.log_level)
+    setup_logging(settings.log_level, settings.log_file_path)
     logger = get_logger(__name__)
     logger.info(f"Starting {settings.app_name} v{__version__}")
     logger.info(f"Log level: {settings.log_level}")
@@ -83,7 +83,7 @@ app.include_router(query.router)
 @app.get("/", response_class=HTMLResponse, tags=["Root"])
 async def root():
     """Serve the main UI."""
-    with open("static/index.html", "r") as f:
+    with open("static/index.html") as f:
         return f.read()
 
 
